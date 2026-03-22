@@ -1,5 +1,9 @@
 <!-- react = 바뀐 부분만 rerender! awesome Point Interactive 적합-->
+<!-- counter가 우리가 원하는 곳 외에서도 바뀌게 해야할 수 있음
+ state 바꾸기 - (1) serCounter(숫자 or 문자) = 고정
+ (2) 함수 전달(계산): 이전 -> 현재 값  -->
 
+(3)
 <!doctype html>
 <html lang="en">
   <head>
@@ -19,8 +23,10 @@
     function App() {
       const [counter, setCounter] = React.useState(0);
       const onClick = () => {
-        setCounter(counter + 1);
+        // serCounter(counter +1)
+        setCounter((current) => current + 1); // more safe, current = now value
       };
+
       return (
         <div>
           <h3>Total clicks: {counter}</h3>
