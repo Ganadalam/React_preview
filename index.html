@@ -3,7 +3,8 @@
  state 바꾸기 - (1) serCounter(숫자 or 문자) = 고정
  (2) 함수 전달(계산): 이전 -> 현재 값  -->
 
-(3)
+<!-- JSX = HTML 과 유사, js word 사용 불가 = for, class -> htmlFor, className-->
+<!--react 에서 input은 통제 가능 범위 X -> useState make needed -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,16 +22,26 @@
   <script type="text/babel">
     const root = document.getElementById("root");
     function App() {
-      const [counter, setCounter] = React.useState(0);
-      const onClick = () => {
-        // serCounter(counter +1)
-        setCounter((current) => current + 1); // more safe, current = now value
+      const [minutes, setMinutes] = React.useState(""); // useState는 array 제공, 첫 element = current value
+      const onChange = (event) => {
+        setMinutes(event.target.value);
       };
 
       return (
         <div>
-          <h3>Total clicks: {counter}</h3>
-          <button onClick={onClick}>Click me</button>
+          <h1 className="hi">Converter</h1>
+          <label htmlFor="minutes">minutes</label>
+          <input
+            value={minutes}
+            id="minutes"
+            placeholder="Minutes"
+            type="number"
+            onChange={onChange}
+          />
+          <h4> You want to convert {minutes} </h4>
+          <label htmlFor="hours">Hours</label>
+
+          <input placeholder="Hours" type="number" />
         </div>
       );
     }
