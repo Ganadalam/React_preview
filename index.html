@@ -13,14 +13,22 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <script type="text/babel">
-    const root = document.getElementById("root");
-
-    const Container = () => (
-      <div>
-        <h3> Total clicks : 0</h3>
-        <button>"click me!"</button>
-      </div>
-    );
-    ReactDOM.render(<Container />, root);
+    let counter = 0;
+    function countUp() {
+      counter = counter + 1;
+      render();
+    }
+    function render() {
+      ReactDOM.render(<Container />, root);
+    }
+    function Container() {
+      return (
+        <div>
+          <h3> Total clicks: {counter} </h3>
+          <button onClick={countUp}>Click Me</button>
+        </div>
+      );
+    }
+    render();
   </script>
 </html>
